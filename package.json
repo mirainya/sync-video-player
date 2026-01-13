@@ -1,0 +1,38 @@
+{
+  "name": "sync-player",
+  "version": "1.0.0",
+  "description": "A multi-user synchronized video player with danmaku (bullet comments) and chat room support",
+  "main": "server.js",
+  "scripts": {
+    "start": "concurrently \"node server.js\" \"node web_server.js\"",
+    "server": "node server.js",
+    "web": "node web_server.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run web\""
+  },
+  "keywords": [
+    "video-player",
+    "sync",
+    "websocket",
+    "danmaku",
+    "bullet-comments",
+    "chat",
+    "real-time",
+    "collaborative"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.11.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
