@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.agedm.io)",
+      "Bash(npm start)",
+      "WebSearch",
+      "Bash(taskkill:*)",
+      "Bash(node web_server.js:*)",
+      "Bash(timeout 2 cmd:*)",
+      "Bash(curl:*)",
+      "Bash(tree:*)",
+      "Bash(dir:*)",
+      "Bash(node test-parser.js:*)",
+      "Bash(del:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(timeout 3 cmd:*)"
+    ]
+  }
+}
