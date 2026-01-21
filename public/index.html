@@ -620,6 +620,45 @@
       color: #2c3e50;
     }
 
+    .admin-badge {
+      display: inline-block;
+      margin-left: 5px;
+      font-size: 1.1rem;
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.8));
+        transform: scale(1);
+      }
+      50% {
+        filter: drop-shadow(0 0 6px rgba(255, 215, 0, 1));
+        transform: scale(1.1);
+      }
+    }
+
+    .vote-btn {
+      padding: 4px 8px;
+      background: linear-gradient(45deg, #ffc107, #e0a800);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .vote-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 3px 10px rgba(255, 193, 7, 0.4);
+    }
+
+    .vote-count {
+      font-size: 0.85rem;
+      color: #6c757d;
+      margin-left: 5px;
+    }
+
     @media (max-width: 1024px) {
       .container {
         grid-template-columns: 1fr;
@@ -712,9 +751,14 @@
         </div>
         <label>支持 MP4, WebM, OGG 等格式</label>
         <div class="url-input-group">
-          <input type="text" id="videoUrl" placeholder="或输入视频文件URL">
-          <button onclick="loadVideo()">加载</button>
+          <input type="text" id="videoUrl" placeholder="输入视频页面URL或直接视频链接">
+          <button onclick="parseAndLoadVideo()" id="parseBtn">
+            <span id="parseBtnText">🔍 解析并加载</span>
+            <span id="parseBtnSpinner" style="display:none;">⏳ 解析中...</span>
+          </button>
+          <button onclick="loadVideo()" style="background: linear-gradient(45deg, #6c757d, #5a6268);">直接加载</button>
         </div>
+        <div id="parseStatus" style="display:none; margin-top: 8px; padding: 8px; border-radius: 4px; font-size: 0.9rem;"></div>
       </section>
 
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
@@ -781,6 +825,8 @@
     </div>
   </div>
 
+  <!-- HLS.js library for streaming video support -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="script.js"></script>
 </body>
 </html>
